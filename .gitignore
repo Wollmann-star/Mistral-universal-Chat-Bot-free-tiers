@@ -1,50 +1,74 @@
-```
-# Backup files
-*_backup*.html
-
-# Python cache
-__pycache__/
+# Compiled and build artifacts
 *.pyc
-*.pyo
-*.pyd
+__pycache__/
+*.o
+*.obj
+*.class
+*.exe
+*.dll
+*.so
+*.a
+*.out
 
-# Environment files
+# Dependencies
+node_modules/
+venv/
+.venv/
 .env
 .env.local
 *.env.*
 
-# Logs
-*.log
+# Build directories
+dist/
+build/
+target/
+.gradle/
 
-# Temporary files
-*.tmp
-*.temp
-*.bak
+# Python caches
+.mypy_cache/
+.pytest_cache/
+*.pyc
+__pycache__/
 
-# Editors
+# Editor/IDE files
 .vscode/
 .idea/
 *.swp
 *.swo
+*.tmp
 
-# Build artifacts
-dist/
-build/
-*.o
-*.obj
-*.out
-
-# Dependencies
-.venv/
-venv/
-node_modules/
-
-# Coverage
-.coverage
-coverage/
-htmlcov/
-
-# OS generated files
+# System files
 .DS_Store
 Thumbs.db
-```
+
+# Logs
+*.log
+
+# Coverage
+coverage/
+htmlcov/
+.coverage
+
+# Compressed files
+*.zip
+*.gz
+*.tar
+*.tgz
+*.bz2
+*.xz
+*.7z
+*.rar
+*.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
