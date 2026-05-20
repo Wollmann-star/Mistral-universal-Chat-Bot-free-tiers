@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="cyber">
+<html lang="fr" data-theme="cyber">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>VOANH AI — Your Personal Artificial Intelligence</title>
+<title>VOANH AI — Votre Intelligence Artificielle Personnelle</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Share+Tech+Mono&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -1609,19 +1609,19 @@ body::before {
 
 <!-- ═══════════════════ INPUT ═══════════════════ -->
 <div id="input-area" style="position:relative">
-  <button id="voice-btn" title="Voice dictation">🎤</button>
-  <button id="file-upload-btn" title="Attach a file/image/audio" style="background:var(--hull);border:var(--hud-border);color:var(--text-dim);font-size:16px;width:46px;height:46px;border-radius:var(--r-lg);cursor:pointer;transition:var(--transition);display:flex;align-items:center;justify-content:center;flex-shrink:0;align-self:flex-end">📎</button>
+  <button id="voice-btn" title="Dictée vocale">🎤</button>
+  <button id="file-upload-btn" title="Joindre un fichier/image/audio" style="background:var(--hull);border:var(--hud-border);color:var(--text-dim);font-size:16px;width:46px;height:46px;border-radius:var(--r-lg);cursor:pointer;transition:var(--transition);display:flex;align-items:center;justify-content:center;flex-shrink:0;align-self:flex-end">📎</button>
   <input type="file" id="file-input" accept="image/*,audio/*,.pdf" style="display:none">
   <textarea id="user-input" placeholder="Transmettez votre message… (Entrée pour envoyer, Maj+Entrée pour nouvelle ligne)" rows="1"></textarea>
   <button id="send-btn">SEND ▶</button>
 </div>
 
 <!-- ═══════════════════ ARCHIVES ═══════════════════ -->
-<button id="archives-btn" title="Conversation archives">⬡</button>
+<button id="archives-btn" title="Archives des conversations">⬡</button>
 <div id="archives-panel">
   <div class="archives-header">
     <h3>⬡ ARCHIVES</h3>
-    <button class="btn-ghost" id="archives-new-btn" style="padding:3px 8px;font-size:9px;border-radius:3px;letter-spacing:1px">+ NEW</button>
+    <button class="btn-ghost" id="archives-new-btn" style="padding:3px 8px;font-size:9px;border-radius:3px;letter-spacing:1px">+ NOUVEAU</button>
   </div>
   <div class="archives-search">
     <input type="text" id="archives-search-input" placeholder="Rechercher une conversation…">
@@ -1633,11 +1633,11 @@ body::before {
 <button id="scroll-bottom" title="Descendre">↓</button>
 
 <!-- ═══════════════════ MEMORY ═══════════════════ -->
-<button id="memory-toggle" title="Global Memory">⬡</button>
+<button id="memory-toggle" title="Mémoire Globale">⬡</button>
 <div id="memory-panel">
   <div class="memory-header">
     <h3>⬡ MÉMOIRE GLOBALE</h3>
-    <button class="btn-ghost" id="memory-clear" style="padding:3px 8px;font-size:10px;border-radius:3px">CLEAR</button>
+    <button class="btn-ghost" id="memory-clear" style="padding:3px 8px;font-size:10px;border-radius:3px">EFFACER</button>
   </div>
   <div class="memory-list" id="memory-list"></div>
   <div class="memory-input">
@@ -1662,13 +1662,13 @@ body::before {
       <!-- FORMULAIRE -->
       <div class="field-group">
         <label class="field-label">🔑 Clé API Mistral</label>
-        <input type="password" class="field-input" id="api-key-input" placeholder="Paste your key here…">
+        <input type="password" class="field-input" id="api-key-input" placeholder="Collez votre clé ici…">
         <div class="field-hint">Format : min. 20 caractères — ex. <code style="font-family:var(--font-mono);color:var(--text-code);font-size:11px">sk-xxxxxxxxxxxxxxxxxxxxxxxx</code></div>
       </div>
       <div class="btn-row" style="margin-top:0;padding-top:0;border-top:none;margin-bottom:20px">
-        <button class="btn-ghost" id="close-api-modal-2">Cancel</button>
-        <button class="btn-ghost danger" id="delete-api-key" style="border-color:rgba(255,51,102,0.3);color:var(--danger)">🗑 DELETE</button>
-        <button class="btn-primary" id="save-api-key">💾 SAVE AND ACTIVATE</button>
+        <button class="btn-ghost" id="close-api-modal-2">Annuler</button>
+        <button class="btn-ghost danger" id="delete-api-key" style="border-color:rgba(255,51,102,0.3);color:var(--danger)">🗑 SUPPRIMER</button>
+        <button class="btn-primary" id="save-api-key">💾 ENREGISTRER ET ACTIVER</button>
       </div>
 
       <!-- SÉPARATEUR -->
@@ -1676,12 +1676,12 @@ body::before {
 
       <!-- INFO TUTORIEL -->
       <div class="info-block" style="margin-top:12px">
-        <strong>✦ Free Tier Mistral AI — Official 2025 Figures</strong><br>
-        The Mistral AI Free Tier provides access to models via the API without a paid subscription. Exact limits depend on the model used, but typically:
+        <strong>✦ Free Tier Mistral AI — Chiffres Officiels 2025</strong><br>
+        Le Free Tier de Mistral AI donne accès aux modèles via l'API sans abonnement payant. Les limites exactes dépendent du modèle utilisé, mais typiquement :
         <ul style="padding-left:16px;margin-top:8px;line-height:2">
           <li>Modèles légers (Ministral, Mistral Small) : <strong>~1 req/sec</strong>, plusieurs dizaines de milliers de tokens/min</li>
           <li>Modèles large (Mistral Large, Codestral) : <strong>~500 req/heure</strong>, limites adaptées</li>
-          <li>No credit card fees to get started</li>
+          <li>Aucun frais de carte bancaire pour commencer</li>
         </ul>
         <div style="margin-top:8px;font-size:12px;color:var(--text-dim)">▸ Consultez <code>console.mistral.ai</code> → votre tableau de bord pour voir vos quotas en temps réel.</div>
       </div>
@@ -1689,15 +1689,15 @@ body::before {
       <!-- ÉTAPES -->
       <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:2px;color:var(--cyan);margin:14px 0 10px;opacity:0.7">PROCÉDURE EN 4 ÉTAPES</div>
       <ol class="step-list">
-        <li>Open <strong><code>console.mistral.ai</code></strong> in your browser</li>
+        <li>Ouvrez <strong><code>console.mistral.ai</code></strong> dans votre navigateur</li>
         <li>Cliquez sur <strong>"Sign Up"</strong> → créez votre compte (email + mot de passe, ou OAuth Google)</li>
         <li>Dans le menu latéral, allez dans <strong>"API Keys"</strong> → cliquez <strong>"Create new key"</strong> → nommez-la (ex. <em>voanh-key</em>)</li>
-        <li>Copy the generated key (visible <strong>only once</strong>) → paste it in the field above</li>
+        <li>Copiez la clé générée (visible <strong>une seule fois</strong>) → collez-la dans le champ ci-dessus</li>
       </ol>
 
       <div class="success-block">
         <strong>🔒 Persistance garantie 365 jours</strong><br>
-        Your API key is stored in a secure cookie <strong>AND</strong> in your browser's local storage. It is automatically restored on each visit and is never transmitted to any third-party server — only sent directly to <code style="font-size:11px;color:var(--neon)">api.mistral.ai</code>.
+        Votre clé API est stockée dans un cookie sécurisé <strong>ET</strong> dans le stockage local de votre navigateur. Elle est automatiquement restaurée à chaque visite et n'est jamais transmise à aucun serveur tiers — uniquement envoyée directement à <code style="font-size:11px;color:var(--neon)">api.mistral.ai</code>.
       </div>
 
       <div style="margin-top:12px;font-size:12px;color:var(--text-dim);text-align:center">
@@ -1723,7 +1723,7 @@ body::before {
       <!-- EXPLICATION DU CERVEAU CENTRAL -->
       <div class="info-block" style="border-left-color:var(--neon)">
         <strong style="color:var(--neon)">▸ Qu'est-ce qu'un Agent VOANH ?</strong><br>
-        An Agent is an <em>central brain</em> that directs every conversation. It defines the <strong>personality</strong>, <strong>area of expertise</strong>, <strong>tone</strong>, and <strong>behavioral rules</strong> of the AI model. Once activated, every response is shaped by its instructions. You can create multiple specialized agents (dev, writing, analysis, research…) and switch depending on the task.
+        Un Agent est un <em>cerveau central</em> qui dirige chaque conversation. Il définit la <strong>personnalité</strong>, le <strong>domaine d'expertise</strong>, le <strong>ton</strong> et les <strong>règles comportementales</strong> du modèle IA. Une fois activé, chaque réponse est façonnée par ses instructions. Vous pouvez créer plusieurs agents spécialisés (dev, rédaction, analyse, recherche…) et switcher selon la tâche.
       </div>
 
       <!-- ONGLETS AGENTS EXISTANTS -->
@@ -1743,14 +1743,14 @@ body::before {
 
       <div class="field-group">
         <label class="field-label">Rôle & Domaine d'Expertise <span style="color:var(--danger)">*</span></label>
-        <textarea class="field-textarea" id="agent-desc" rows="2" placeholder="Example: You are a bioinformatics expert specialized in genomics. You analyze scientific data with precision and cite your sources."></textarea>
-        <div class="field-hint">▸ Describe the specialty, desired tone, and main capabilities of this agent.</div>
+        <textarea class="field-textarea" id="agent-desc" rows="2" placeholder="Ex : Tu es un expert en bioinformatique spécialisé en génomique. Tu analyses les données scientifiques avec précision et cites tes sources."></textarea>
+        <div class="field-hint">▸ Décrivez la spécialité, le ton souhaité et les capacités principales de cet agent.</div>
       </div>
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
         <div class="field-group">
           <label class="field-label">Tags Mémoire</label>
-          <input type="text" class="field-input" id="agent-tags" placeholder="code, research, medicine">
+          <input type="text" class="field-input" id="agent-tags" placeholder="code, recherche, médecine">
           <div class="field-hint">Séparés par des virgules</div>
         </div>
         <div class="field-group">
@@ -1763,13 +1763,13 @@ body::before {
 
       <div class="field-group">
         <label class="field-label">Instructions Comportementales Avancées</label>
-        <textarea class="field-textarea" id="agent-instructions" rows="4" placeholder="Example:&#10;- Always respond in English unless the user writes in another language&#10;- Structure your responses with clear sections&#10;- Systematically cite sources and APIs used&#10;- If the question is outside your domain, state it clearly"></textarea>
-        <div class="field-hint">▸ These rules are injected into every system prompt. Be precise for optimal central brain behavior.</div>
+        <textarea class="field-textarea" id="agent-instructions" rows="4" placeholder="Ex :&#10;- Réponds toujours en français sauf si l'utilisateur écrit en anglais&#10;- Structure tes réponses avec des sections claires&#10;- Cite systématiquement les sources et les APIs utilisées&#10;- Si la question dépasse ton domaine, dis-le clairement"></textarea>
+        <div class="field-hint">▸ Ces règles sont injectées dans chaque prompt système. Soyez précis pour un comportement optimal du cerveau central.</div>
       </div>
 
       <div class="field-group">
         <label class="field-label">Phrase d'Amorce (Contexte Initial)</label>
-        <textarea class="field-textarea" id="agent-primer" rows="2" placeholder="Example: 'I start each analysis with a review of recent publications on PubMed...'"></textarea>
+        <textarea class="field-textarea" id="agent-primer" rows="2" placeholder="Ex : 'Je commence chaque analyse par une revue des publications récentes sur PubMed…'"></textarea>
         <div class="field-hint">▸ Contexte de départ injecté au début de la conversation.</div>
       </div>
 
@@ -1777,7 +1777,7 @@ body::before {
       <div class="agent-advanced-section" style="margin-top:8px">
         <div class="agent-advanced-toggle" id="create-adv-toggle">
           <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 9L1 3h10z"/></svg>
-          ADVANCED SETTINGS (optional)
+          PARAMÈTRES AVANCÉS (optionnel)
         </div>
         <div class="agent-advanced-body" id="create-adv-body">
           <div class="field-group" style="margin-bottom:12px">
@@ -1805,7 +1805,7 @@ body::before {
         </div>
       </div>
       <div class="btn-row">
-        <button class="btn-ghost" id="close-agent-modal-2">Cancel</button>
+        <button class="btn-ghost" id="close-agent-modal-2">Annuler</button>
         <button class="btn-primary" id="save-agent">⚙ CRÉER L'AGENT</button>
       </div>
     </div>
@@ -1827,7 +1827,7 @@ body::before {
 
       <div class="info-block">
         <strong>▸ Stockage 100% Local</strong><br>
-        All your data (conversations, agents, memories) are stored in your browser's IndexedDB database. Export them to back up or transfer to another device.
+        Toutes vos données (conversations, agents, mémoires) sont stockées dans la base IndexedDB de votre navigateur. Exportez-les pour les sauvegarder ou les transférer sur un autre appareil.
       </div>
 
       <!-- STATS -->
@@ -1873,9 +1873,9 @@ body::before {
           Analyse en cours…
         </div>
         <div style="display:flex;gap:8px">
-          <button class="btn-ghost" id="btn-import-cancel" style="flex:1">✕ Cancel</button>
+          <button class="btn-ghost" id="btn-import-cancel" style="flex:1">✕ Annuler</button>
           <button class="btn-primary" id="btn-import-confirm" style="flex:2;justify-content:center;display:flex;gap:6px;align-items:center">
-            ✓ VALIDATE AND RESTORE
+            ✓ VALIDER ET RESTAURER
           </button>
         </div>
       </div>
@@ -1883,7 +1883,7 @@ body::before {
       <!-- DANGER ZONE -->
       <div class="section-title" style="border-top-color:rgba(255,51,102,0.3);color:rgba(255,51,102,0.6)">ZONE CRITIQUE</div>
       <button class="btn-ghost" id="btn-clear-all" style="width:100%;justify-content:center;display:flex;border-color:rgba(255,51,102,0.3);color:var(--danger)">
-        ⚠ DELETE ALL LOCAL DATA
+        ⚠ SUPPRIMER TOUTES LES DONNÉES LOCALES
       </button>
 
       <div class="btn-row" style="border-top:none;margin-top:12px;padding-top:0">
@@ -1915,11 +1915,11 @@ body::before {
         <div class="wizard-dot" id="wdot-3"></div>
       </div>
       <div class="wizard-title">Bienvenue sur VOANH AI</div>
-      <div class="wizard-subtitle">Your personal AI, configured according to your vision.<br>Let's start by activating your Mistral access.</div>
+      <div class="wizard-subtitle">Votre IA personnelle, configurée selon votre vision.<br>Commençons par activer votre accès Mistral.</div>
       <div class="field-group">
         <label class="field-label">🔑 Clé API Mistral <span style="color:var(--danger)">*</span></label>
-        <input type="password" class="field-input" id="wizard-api-key" placeholder="Paste your Mistral API key here…">
-        <div class="field-hint">Get your free key at <a href="https://console.mistral.ai" target="_blank" style="color:var(--cyan)">console.mistral.ai</a> → API Keys</div>
+        <input type="password" class="field-input" id="wizard-api-key" placeholder="Collez votre clé API Mistral ici…">
+        <div class="field-hint">Obtenez votre clé gratuite sur <a href="https://console.mistral.ai" target="_blank" style="color:var(--cyan)">console.mistral.ai</a> → API Keys</div>
       </div>
       <div class="btn-row" style="border-top:none;padding-top:0">
         <button class="btn-primary" id="wizard-step1-next" style="width:100%;justify-content:center;display:flex">CONTINUER →</button>
@@ -1934,7 +1934,7 @@ body::before {
         <div class="wizard-dot" id="wdot-3b"></div>
       </div>
       <div class="wizard-title">Définissez votre IA</div>
-      <div class="wizard-subtitle">This information will allow VOANH to automatically generate 20 specialized agents perfectly adapted to your context.</div>
+      <div class="wizard-subtitle">Ces informations permettront à VOANH de générer automatiquement 20 agents spécialisés parfaitement adaptés à votre contexte.</div>
       <div class="field-group">
         <label class="field-label">🎯 Nom de votre IA <span style="color:var(--danger)">*</span></label>
         <input type="text" class="field-input" id="wizard-ai-name" placeholder="Ex : Atlas, Sentinel, Nexus, MyAssistant…">
@@ -1942,7 +1942,7 @@ body::before {
       </div>
       <div class="field-group">
         <label class="field-label">🚀 But principal de votre IA <span style="color:var(--danger)">*</span></label>
-        <textarea class="field-textarea" id="wizard-ai-goal" rows="3" placeholder="Describe your context and goal. Example: &#10;'I am a freelance web developer, I need an AI to help me with code, client project management, writing business proposals, and technology watch.'&#10;or&#10;'I am a medical student, I need help reviewing, understanding clinical cases, preparing for exams, and organizing my work.'"></textarea>
+        <textarea class="field-textarea" id="wizard-ai-goal" rows="3" placeholder="Décrivez votre contexte et objectif. Ex : &#10;'Je suis développeur freelance web, j'ai besoin d'une IA pour m'aider avec le code, la gestion de projets clients, la rédaction de propositions commerciales et la veille technologique.'&#10;ou&#10;'Je suis étudiant en médecine, j'ai besoin d'aide pour réviser, comprendre des cas cliniques, préparer mes examens et m'organiser.'"></textarea>
         <div class="field-hint">▸ Plus vous êtes précis, plus les agents générés seront pertinents.</div>
       </div>
       <div class="btn-row" style="border-top:none;padding-top:0">
@@ -1959,11 +1959,11 @@ body::before {
         <div class="wizard-dot active"></div>
       </div>
       <div class="wizard-title" id="wizard-step3-title">Génération des Agents IA</div>
-      <div class="wizard-subtitle" id="wizard-step3-sub">Mistral is analyzing your profile and creating 20 ultra-specialized agents…</div>
+      <div class="wizard-subtitle" id="wizard-step3-sub">Mistral analyse votre profil et crée 20 agents ultra-spécialisés…</div>
       <div class="wizard-generating" id="wizard-gen-loader">
         <div class="wizard-gen-icon">⚙</div>
         <div class="wizard-gen-status">GÉNÉRATION EN COURS…</div>
-        <div class="wizard-gen-detail" id="wizard-gen-detail">Connecting to Mistral AI…</div>
+        <div class="wizard-gen-detail" id="wizard-gen-detail">Connexion à Mistral AI…</div>
       </div>
       <div id="wizard-agents-preview" style="display:none">
         <div class="agent-gen-grid" id="wizard-agents-grid"></div>
@@ -2009,7 +2009,7 @@ body::before {
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
         <div class="field-group">
           <label class="field-label">Tags Mémoire</label>
-          <input type="text" class="field-input" id="edit-agent-tags" placeholder="code, research, health">
+          <input type="text" class="field-input" id="edit-agent-tags" placeholder="code, recherche, santé">
         </div>
         <div class="field-group">
           <label class="field-label">Modèle préféré</label>
@@ -2030,7 +2030,7 @@ body::before {
       <div class="agent-advanced-section">
         <div class="agent-advanced-toggle" id="edit-adv-toggle">
           <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 9L1 3h10z"/></svg>
-          ADVANCED SETTINGS
+          PARAMÈTRES AVANCÉS
         </div>
         <div class="agent-advanced-body" id="edit-adv-body">
           <div class="field-group" style="margin-bottom:12px">
@@ -2074,9 +2074,9 @@ body::before {
         </div>
       </div>
       <div class="btn-row">
-        <button class="btn-ghost" id="close-edit-agent-modal-2">Cancel</button>
+        <button class="btn-ghost" id="close-edit-agent-modal-2">Annuler</button>
         <button class="btn-ghost" id="duplicate-agent-btn" style="color:var(--neon);border-color:rgba(0,255,157,0.3)">⎘ Dupliquer</button>
-        <button class="btn-primary" id="save-edit-agent">💾 SAVE</button>
+        <button class="btn-primary" id="save-edit-agent">💾 ENREGISTRER</button>
       </div>
     </div>
   </div>
@@ -2091,26 +2091,26 @@ body::before {
 // CONFIG
 // ════════════════════════════════════════
 const MODELS = [
-  { id:"mistral-large-2512",          name:"🔥 Mistral Omega — Most Powerful",  badge:"🔥 Powerful",  desc:"Complex reasoning, long analysis, best quality",   tokens:50000,  ctx:"4M",   temp:0.42 },
-  { id:"mistral-medium-2508",         name:"⚡ Mistral Zenith — Best Value",   badge:"⚡ Fast",    desc:"Best quality/speed ratio for daily use",       tokens:375000, ctx:"-",    temp:0.48 },
+  { id:"mistral-large-2512",          name:"🔥 Mistral Omega — Le Plus Puissant",  badge:"🔥 Puissant",  desc:"Raisonnement complexe, analyse longue, meilleure qualité",   tokens:50000,  ctx:"4M",   temp:0.42 },
+  { id:"mistral-medium-2508",         name:"⚡ Mistral Zenith — Meilleur Ratio",   badge:"⚡ Rapide",    desc:"Meilleur rapport qualité/vitesse pour usage quotidien",       tokens:375000, ctx:"-",    temp:0.48 },
   { id:"codestral-2508",              name:"💻 CodeForge (Codestral) — Code",      badge:"💻 Code",      desc:"Expert génération et optimisation de code, tous langages",    tokens:50000,  ctx:"4M",   temp:0.48 },
   { id:"devstral-2512",               name:"💻 DevMind Ultra — Dev Full-Stack",    badge:"💻 Dev",       desc:"Développement full-stack, architecture, debugging avancé",    tokens:50000,  ctx:"4M",   temp:0.48 },
   { id:"devstral-medium-2507",        name:"💻 DevPulse Medium — Dev Quotidien",   badge:"💻 Dev",       desc:"Équilibre parfait pour le développement quotidien",           tokens:50000,  ctx:"4M",   temp:0.42 },
-  { id:"devstral-small-2507",         name:"⚡ DevSpark Lite — Fast Dev",        badge:"⚡ Fast",    desc:"Fast and lightweight for simple dev tasks",                     tokens:50000,  ctx:"4M",   temp:0.42 },
-  { id:"ministral-8b-2512",           name:"⚡ MicroGenius 8B — Daily Use",  badge:"⚡ Fast",    desc:"Compact, fast, perfect for everyday questions and tasks", tokens:50000,  ctx:"4M",   temp:0.42 },
-  { id:"ministral-3b-2512",           name:"⚡ NanoMind 3B — Ultra Fast",        badge:"⚡ Ultra",     desc:"Ultra-fast, ideal for micro-tasks and quick responses",   tokens:50000,  ctx:"4M",   temp:0.42 },
-  { id:"ministral-14b-2512",          name:"🔥 MiniTitan 14B — High Performance", badge:"🔥 Powerful",  desc:"Dense performance, maximum efficiency, best 14B",        tokens:50000,  ctx:"4M",   temp:0.42 },
-  { id:"magistral-medium-2509",       name:"🔥 MagiCore — Reasoning",          badge:"🔥 Reasoning", desc:"Mastered power for reasoning and analysis",          tokens:75000,  ctx:"1B",   temp:0.48 },
-  { id:"magistral-small-2509",        name:"⚡ MagiSwift — Fast Reasoning",  badge:"⚡ Rapid-Reason", desc:"Fast and precise reasoning, 1B context",               tokens:75000,  ctx:"1B",   temp:0.48 },
-  { id:"mistral-medium-2505",         name:"🔥 Mistral Equinox — Contexte Long",  badge:"🔥 Long ctx",  desc:"375k token context, long document analysis",           tokens:375000, ctx:"-",    temp:0.48 },
+  { id:"devstral-small-2507",         name:"⚡ DevSpark Lite — Dev Rapide",        badge:"⚡ Rapide",    desc:"Rapide et léger pour tâches dev simples",                     tokens:50000,  ctx:"4M",   temp:0.42 },
+  { id:"ministral-8b-2512",           name:"⚡ MicroGenius 8B — Usage Quotidien",  badge:"⚡ Rapide",    desc:"Compact, rapide, parfait pour questions et tâches courantes", tokens:50000,  ctx:"4M",   temp:0.42 },
+  { id:"ministral-3b-2512",           name:"⚡ NanoMind 3B — Ultra Rapide",        badge:"⚡ Ultra",     desc:"Ultra-rapide, idéal pour micro-tâches et réponses rapides",   tokens:50000,  ctx:"4M",   temp:0.42 },
+  { id:"ministral-14b-2512",          name:"🔥 MiniTitan 14B — Haute Performance", badge:"🔥 Puissant",  desc:"Performance dense, efficacité maximale, meilleur 14B",        tokens:50000,  ctx:"4M",   temp:0.42 },
+  { id:"magistral-medium-2509",       name:"🔥 MagiCore — Raisonnement",          badge:"🔥 Raisonnement", desc:"Puissance maîtrisée pour raisonnement et analyse",          tokens:75000,  ctx:"1B",   temp:0.48 },
+  { id:"magistral-small-2509",        name:"⚡ MagiSwift — Raisonnement Rapide",  badge:"⚡ Rapid-Reason", desc:"Raisonnement rapide et précis, contexte 1B",               tokens:75000,  ctx:"1B",   temp:0.48 },
+  { id:"mistral-medium-2505",         name:"🔥 Mistral Equinox — Contexte Long",  badge:"🔥 Long ctx",  desc:"Contexte 375k tokens, analyses de longs documents",           tokens:375000, ctx:"-",    temp:0.48 },
   { id:"mistral-small-2506",          name:"⚡ Mistral Flash — Instantané",       badge:"⚡ Flash",     desc:"Réponses instantanées, faible latence, très économique",       tokens:50000,  ctx:"4M",   temp:0.42 },
-  { id:"mistral-small-2603",          name:"⚡ Mistral Nova — Contexte Long",     badge:"⚡ Long ctx",  desc:"Very large 375k context, long conversation analysis",  tokens:375000, ctx:"-",    temp:1.44 },
+  { id:"mistral-small-2603",          name:"⚡ Mistral Nova — Contexte Long",     badge:"⚡ Long ctx",  desc:"Contexte très large 375k, analyse de longues conversations",  tokens:375000, ctx:"-",    temp:1.44 },
   { id:"labs-mistral-small-creative", name:"✨ CreatiFlow — Créatif",             badge:"✨ Créatif",   desc:"Explosion créative pour brainstorming et idées innovantes",   tokens:50000,  ctx:"4M",   temp:0.42 },
   { id:"open-mistral-nemo",           name:"⚡ Nemo OpenCore — Open Source",      badge:"⚡ Open",      desc:"Polyvalent, open-source, fiable et gratuit",                  tokens:50000,  ctx:"4M",   temp:0.42 },
-  { id:"pixtral-12b-2409",            name:"👁 Pixtral Vision — Image Analysis",  badge:"👁 Vision",    desc:"Multimodal visual analysis, understands images and text",       tokens:50000,  ctx:"4M",   temp:0.42, vision:true },
-  { id:"pixtral-large-2411",          name:"👁 Pixtral OmniSight — Vision Pro",   badge:"👁 Vision Pro", desc:"Premium vision, deep understanding of complex images",  tokens:50000,  ctx:"4M",   temp:0.42, vision:true },
-  { id:"voxtral-mini-2507",           name:"🎵 Voxtral Echo — Light Audio",       badge:"🎵 Audio",     desc:"Audio processing, light and precise transcription",            tokens:50000,  ctx:"4M",   temp:0.42, audio:true },
-  { id:"voxtral-small-2507",          name:"🎵 Voxtral Sonic — Fast Audio",     badge:"🎵 Audio",     desc:"Fast audio, intelligent multi-language transcription",       tokens:50000,  ctx:"4M",   temp:0.42, audio:true }
+  { id:"pixtral-12b-2409",            name:"👁 Pixtral Vision — Analyse Images",  badge:"👁 Vision",    desc:"Analyse visuelle multimodale, comprend images et texte",       tokens:50000,  ctx:"4M",   temp:0.42, vision:true },
+  { id:"pixtral-large-2411",          name:"👁 Pixtral OmniSight — Vision Pro",   badge:"👁 Vision Pro", desc:"Vision premium, compréhension profonde d'images complexes",  tokens:50000,  ctx:"4M",   temp:0.42, vision:true },
+  { id:"voxtral-mini-2507",           name:"🎵 Voxtral Echo — Audio Léger",       badge:"🎵 Audio",     desc:"Traitement audio, transcription légère et précise",            tokens:50000,  ctx:"4M",   temp:0.42, audio:true },
+  { id:"voxtral-small-2507",          name:"🎵 Voxtral Sonic — Audio Rapide",     badge:"🎵 Audio",     desc:"Audio rapide, transcription intelligente multi-langues",       tokens:50000,  ctx:"4M",   temp:0.42, audio:true }
 ];
 
 const DB_NAME = "VOANH_AI_DB";
@@ -2150,7 +2150,7 @@ const toast = (msg, type = "info") => {
   setTimeout(() => t.remove(), 3800);
 };
 
-// Persistent storage API key: cookie 365 days + localStorage fallback
+// Stockage persistant API key : cookie 365j + localStorage fallback
 const setCookie = (n, v, d = 365) => {
   try {
     const e = new Date(); e.setDate(e.getDate() + d);
@@ -2159,7 +2159,7 @@ const setCookie = (n, v, d = 365) => {
   try { localStorage.setItem('voanh_' + n, v); } catch(err) {}
 };
 const getCookie = n => {
-  // Priority: cookie, then localStorage
+  // Priorité : cookie, puis localStorage
   try {
     const m = document.cookie.match('(^|;)\\s*' + n + '\\s*=\\s*([^;]+)');
     if (m) return decodeURIComponent(m.pop());
@@ -2296,7 +2296,7 @@ window.saveToMemory = async ts => {
   if (!el) return;
   const text = (el.innerText || el.textContent).slice(0, 200);
   await memory.add(text);
-  toast("Added to global memory", "success");
+  toast("Ajouté à la mémoire globale", "success");
 };
 
 // ════════════════════════════════════════
@@ -2311,7 +2311,7 @@ function renderMessages() {
       <div class="welcome-banner">
         <div class="wv-logo">VOANH</div>
         <div class="wv-sub">Satoshi Nakamoto AI PLATFORM v3.0</div>
-        <p>Advanced interface with global memory, specialized agents, and access to ${MODELS.length} Mistral AI models. Configure your API key to get started.</p>
+        <p>Interface avancée avec mémoire globale, agents spécialisés et accès aux ${MODELS.length} modèles Mistral AI. Configurez votre clé API pour commencer.</p>
       </div>`;
     return;
   }
@@ -2326,14 +2326,14 @@ function renderMessages() {
     const memoBtn = m.role === 'assistant' ? '<button class="msg-action-btn" onclick="saveToMemory(' + msgId + ')">⬡ MÉMO</button>' : '';
     const printBtn = m.role === 'assistant' ? '<button class="msg-action-btn" onclick="window.print()">🖨 PDF</button>' : '';
     const ratingHtml = m.role === 'assistant' ? `<div class="msg-rating"><span class="rating-label">QUALITÉ</span>${[1,2,3,4,5].map(s => `<button class="rating-star${(m.rating||0)>=s?' active':''}" onclick="rateMessage(${msgId},${s})">★</button>`).join('')}</div>` : '';
-    const imgHtml = m.imageData ? `<div class="msg-image"><img src="${m.imageData}" alt="Attached image" loading="lazy"></div>` : '';
+    const imgHtml = m.imageData ? `<div class="msg-image"><img src="${m.imageData}" alt="Image jointe" loading="lazy"></div>` : '';
     const audioHtml = m.audioName ? `<div style="font-family:var(--font-mono);font-size:10px;color:var(--text-dim);margin-top:4px">🎵 ${m.audioName}</div>` : '';
     div.innerHTML = `
       <div class="msg-label">${label}</div>
       ${imgHtml}${audioHtml}
       <div class="message-content" id="mc-${msgId}">${escapeHtml(m.content || '')}</div>
       <div class="msg-meta">
-        <span>${new Date(m.ts).toLocaleTimeString('en-US', {hour:'2-digit',minute:'2-digit',second:'2-digit'})}</span>
+        <span>${new Date(m.ts).toLocaleTimeString('fr-FR', {hour:'2-digit',minute:'2-digit',second:'2-digit'})}</span>
         ${memTags}
       </div>
       ${ratingHtml}
@@ -2372,7 +2372,7 @@ function buildSystemPrompt() {
     if (state.agent.instructions) prompt += `\n\nInstructions : ${state.agent.instructions}`;
     if (state.agent.primer) prompt += `\n\nContexte initial : ${state.agent.primer}`;
     if (state.agent.style) {
-      const styleMap = {concis:'Respond concisely and directly.',detaille:'Respond exhaustively and in detail.',formel:'Maintain a formal and professional tone.',creatif:'Be creative and innovative in your responses.',pedagogique:'Adopt a pedagogical and clear approach.'};
+      const styleMap = {concis:'Réponds de manière concise et directe.',detaille:'Réponds de manière exhaustive et détaillée.',formel:'Maintiens un ton formel et professionnel.',creatif:'Sois créatif et innovant dans tes réponses.',pedagogique:'Adopte une approche pédagogique et claire.'};
       if (styleMap[state.agent.style]) prompt += `\n\nStyle : ${styleMap[state.agent.style]}`;
     }
     if (state.agent.forbidden) prompt += `\n\nINTERDIT DE : ${state.agent.forbidden}`;
@@ -2381,7 +2381,7 @@ function buildSystemPrompt() {
   const memLimit = Math.min(memPrio * 2, 8);
   const rel = memory.getRelevant("context", memLimit);
   if (rel.length) prompt += `\n\n[MÉMOIRE GLOBALE ACTIVE]\n${rel.join('\n')}`;
-  prompt += "\n\nRespond in the user's language. Be precise, structured, and professional.";
+  prompt += "\n\nRéponds dans la langue de l'utilisateur. Sois précis, structuré et professionnel.";
   return prompt;
 }
 
@@ -2426,7 +2426,7 @@ async function renderArchives() {
       const isActive = c.id === state.chatId;
       const isFav = c.fav ? true : false;
       const msgCount = (c.messages||[]).filter(m=>m.role!=='system').length;
-      const date = c.updated ? new Date(c.updated).toLocaleDateString('en-US',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}) : '';
+      const date = c.updated ? new Date(c.updated).toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}) : '';
       return `<div class="archive-item${isActive?' active-chat':''}" onclick="loadArchiveChat('${c.id}')">
         <span class="archive-item-icon">${isFav?'★':'◈'}</span>
         <div class="archive-item-content">
@@ -2521,7 +2521,7 @@ async function _sendMessageOriginal() {
   const txt = $("#user-input").value.trim();
   if (!txt) return;
   if (!state.apiKey) {
-    toast("Configure your API key first", "error");
+    toast("Configurez votre clé API d'abord", "error");
     $("#api-modal").classList.add("active");
     return;
   }
@@ -2545,7 +2545,7 @@ async function _sendMessageOriginal() {
     if (relevantMems.length) {
       contextMessages.splice(1, 0, {
         role:"user",
-        content:`[Context from global memory]\n${relevantMems.join('\n')}\n\nContinue the conversation:`
+        content:`[Contexte depuis la mémoire globale]\n${relevantMems.join('\n')}\n\nContinuez la conversation :`
       });
     }
     // Use agent's preferred model if set
@@ -2815,7 +2815,7 @@ async function sendMessage() {
   const txt = document.getElementById('user-input').value.trim();
   if (!txt && !state.attachedFile) return;
   if (!state.apiKey) {
-    toast("Configure your API key first", "error");
+    toast("Configurez votre clé API d'abord", "error");
     document.getElementById('api-modal').classList.add("active");
     return;
   }
@@ -2885,7 +2885,7 @@ async function sendMessage() {
   }
 
   if (state.attachedFile && !isVision && !isAudio) {
-    toast("This model does not support files. Use Pixtral Vision or Voxtral for audio.", "error");
+    toast("Ce modèle ne supporte pas les fichiers. Utilisez Pixtral Vision ou Voxtral pour audio.", "error");
     return;
   }
 
@@ -3025,15 +3025,15 @@ function setWizardStep(n) {
 }
 
 async function generateAgentsWithMistral(apiKey, aiName, aiGoal) {
-  const prompt = `You are an expert in AI and multi-agent system architecture.
+  const prompt = `Tu es un expert en IA et en architecture de systèmes multi-agents.
 
-The user wants to create a personal AI named "${aiName}" with the following objective:
+L'utilisateur veut créer une IA personnelle nommée "${aiName}" avec l'objectif suivant :
 "${aiGoal}"
 
-Generate EXACTLY 20 specialized agents perfectly adapted to this context.
-Each agent must have a unique specialty complementary to the others.
+Génère EXACTEMENT 20 agents spécialisés parfaitement adaptés à ce contexte.
+Chaque agent doit avoir une spécialité unique et complémentaire des autres.
 
-Respond ONLY with valid JSON, no markdown, no text before or after:
+Réponds UNIQUEMENT avec un JSON valide, sans markdown, sans texte avant ou après :
 {
   "agents": [
     {
@@ -3086,7 +3086,7 @@ function initWizardEvents() {
   document.getElementById('wizard-step2-next').onclick = async () => {
     const name = document.getElementById('wizard-ai-name').value.trim();
     const goal = document.getElementById('wizard-ai-goal').value.trim();
-    if (!name || !goal) { toast("Name and objective required", "error"); return; }
+    if (!name || !goal) { toast("Nom et objectif obligatoires", "error"); return; }
     state.aiConfig = { name, goal };
     await db.put('settings', { id: 'aiConfig', value: state.aiConfig });
     updateBrandName();
@@ -3129,8 +3129,8 @@ async function runAgentGeneration(name, goal) {
 
   const steps = [
     "Analyse de votre profil…",
-    "Identifying key domains…",
-    "Generating specialties…",
+    "Identification des domaines clés…",
+    "Génération des spécialités…",
     "Construction des instructions…",
     "Finalisation des agents…"
   ];
@@ -3159,7 +3159,7 @@ async function runAgentGeneration(name, goal) {
       </div>
     `).join('');
     document.getElementById('wizard-step3-title').textContent = `✓ ${agents.length} Agents Générés !`;
-    document.getElementById('wizard-step3-sub').textContent = `Your specialized agents are ready. You can modify them at any time.`;
+    document.getElementById('wizard-step3-sub').textContent = `Vos agents spécialisés sont prêts. Vous pourrez les modifier à tout moment.`;
     preview.style.display = 'block';
   } catch(err) {
     clearInterval(interval);
@@ -3253,7 +3253,7 @@ function initGenerateMoreAgents() {
   const btn = document.getElementById('generate-more-agents-btn');
   if (!btn) return;
   btn.onclick = async () => {
-    if (!state.apiKey) { toast("Configure your API key first", "error"); return; }
+    if (!state.apiKey) { toast("Configurez votre clé API d'abord", "error"); return; }
     if (!state.aiConfig) {
       toast("Définissez d'abord votre profil via le wizard", "error"); return;
     }
@@ -3439,7 +3439,7 @@ function bindEvents() {
   if (voiceBtn && ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
     const recognition = new SR();
-    recognition.lang = 'en-US'; recognition.continuous = false; recognition.interimResults = false;
+    recognition.lang = 'fr-FR'; recognition.continuous = false; recognition.interimResults = false;
     let isRecording = false;
     voiceBtn.onclick = () => {
       if (isRecording) { recognition.stop(); return; }
@@ -3531,7 +3531,7 @@ function bindEvents() {
 
   if ($("#delete-api-key")) {
     $("#delete-api-key").onclick = () => {
-      if (!confirm("Delete your saved API key?")) return;
+      if (!confirm("Supprimer votre clé API sauvegardée ?")) return;
       deleteCookie("mistral_api_key");
       state.apiKey = null;
       $("#api-key-input").value = "";
@@ -3599,7 +3599,7 @@ function bindEvents() {
   };
   $("#memory-input").onkeydown = e => { if (e.key === "Enter") { e.preventDefault(); $("#memory-add").click(); } };
   $("#memory-clear").onclick = async () => {
-    if (confirm("Clear all global memory?")) await memory.clear();
+    if (confirm("Effacer toute la mémoire globale ?")) await memory.clear();
   };
 
   // Data Modal
@@ -3616,7 +3616,7 @@ function bindEvents() {
   if ($("#btn-export")) $("#btn-export").onclick = exportData;
 
   if ($("#btn-clear-all")) $("#btn-clear-all").onclick = async () => {
-    if (!confirm("⚠ Delete ALL VOANH local data? This action is irreversible.")) return;
+    if (!confirm("⚠ Supprimer TOUTES les données locales VOANH ? Cette action est irréversible.")) return;
     const stores = ['chats','agents','settings','global_memory'];
     for (const s of stores) {
       const all = await db.getAll(s) || [];
@@ -3642,7 +3642,7 @@ function bindEvents() {
   const showImportPreview = async (file) => {
     pendingImportFile = file;
     $("#import-filename").textContent = file.name;
-    $("#import-fileinfo").textContent = `${(file.size / 1024).toFixed(1)} KB — ${new Date(file.lastModified).toLocaleDateString('en-US')}`;
+    $("#import-fileinfo").textContent = `${(file.size / 1024).toFixed(1)} KB — ${new Date(file.lastModified).toLocaleDateString('fr-FR')}`;
     $("#import-summary").textContent = "Analyse en cours…";
     importPreview.style.display = "block";
     dropZone.style.opacity = "0.4";
@@ -3654,7 +3654,7 @@ function bindEvents() {
       const nbChats = data.chats?.length || 0;
       const nbAgents = data.agents?.length || 0;
       const nbMems = data.global_memory?.length || 0;
-      const exported = payload.exported ? `Sauvegarde du ${new Date(payload.exported).toLocaleString('en-US')}` : "Unknown date";
+      const exported = payload.exported ? `Sauvegarde du ${new Date(payload.exported).toLocaleString('fr-FR')}` : "Date inconnue";
       $("#import-summary").innerHTML = `
         <strong style="color:var(--neon)">✓ Fichier valide</strong><br>
         ${exported}<br>
@@ -3702,7 +3702,7 @@ function bindEvents() {
         await computeStats();
       } finally {
         btn.disabled = false;
-        btn.innerHTML = '✓ VALIDATE AND RESTORE';
+        btn.innerHTML = '✓ VALIDER ET RESTAURER';
       }
     };
   }
