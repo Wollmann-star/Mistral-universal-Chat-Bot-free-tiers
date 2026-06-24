@@ -869,6 +869,7 @@ Status: Check the top-right corner for vault connection status.
           <code>node voanh-vault-integration.js /path/to/vault</code>
         </div>
       `;
+      logDebug('❌ Connection error message displayed to user', 'error');
     }
 
     // UPDATE STATUS INDICATOR
@@ -878,8 +879,10 @@ Status: Check the top-right corner for vault connection status.
       
       if (connected) {
         dot.classList.add('connected');
+        logDebug(`✓ Status updated: Connected (${text})`, 'success');
       } else {
         dot.classList.remove('connected');
+        logDebug(`⚠️ Status updated: ${text}`, 'warn');
       }
       
       statusText.textContent = text;
@@ -906,6 +909,7 @@ Status: Check the top-right corner for vault connection status.
 
     // ADD MESSAGE TO CHAT
     function addMessage(text, sender = 'user', metadata = null) {
+      logDebug(`💬 Message added (${sender}): ${text.substring(0, 50)}...`, 'info');
       const display = document.getElementById('chat-display');
       const msgEl = document.createElement('div');
       msgEl.className = 'chat-message';
@@ -1030,6 +1034,7 @@ Status: Check the top-right corner for vault connection status.
       }
 
       try {
+        logDebug(`🌐 Fetching search from ${state.vaultUrl}/api/search`, 'info');
         const response = await fetch(`${state.vaultUrl}/api/search?q=${encodeURIComponent(keywords)}`);
         const data = await response.json();
         
@@ -1061,6 +1066,7 @@ Status: Check the top-right corner for vault connection status.
       }
 
       try {
+        logDebug(`🌐 Fetching folder from ${state.vaultUrl}/api/folder`, 'info');
         const response = await fetch(`${state.vaultUrl}/api/folder?path=${encodeURIComponent(folder)}`);
         const data = await response.json();
         
@@ -1091,19 +1097,23 @@ Status: Check the top-right corner for vault connection status.
 
     // SETTINGS
     function setupEventListeners() {
+      logDebug('📡 Setting up event listeners...', 'info');
       document.getElementById('query-input').addEventListener('keypress', (e) => {
         if (e.key === 'Enter') sendQuery();
       });
       document.getElementById('settings-btn').addEventListener('click', openSettings);
+      logDebug('✓ Event listeners configured', 'success');
     }
 
     function openSettings() {
+      logDebug('⚙️ Opening settings modal', 'info');
       document.getElementById('api-key-input').value = state.apiKey;
       document.getElementById('vault-url-input').value = state.vaultUrl;
       document.getElementById('settings-modal').classList.add('show');
     }
 
     function closeSettings() {
+      logDebug('⚙️ Closing settings modal', 'info');
       document.getElementById('settings-modal').classList.remove('show');
     }
 
