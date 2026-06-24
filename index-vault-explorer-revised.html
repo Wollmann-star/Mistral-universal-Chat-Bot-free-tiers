@@ -409,6 +409,122 @@
       font-size: 12px;
     }
 
+    /* DEBUG PANEL */
+    .debug-panel {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 400px;
+      max-height: 300px;
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: 8px 0 0 0;
+      z-index: 999;
+      display: none;
+      flex-direction: column;
+      box-shadow: -2px -2px 10px rgba(0,0,0,0.3);
+    }
+
+    .debug-panel.show {
+      display: flex;
+    }
+
+    .debug-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 12px;
+      background: var(--bg-lighter);
+      border-bottom: 1px solid var(--border);
+      border-radius: 8px 0 0 0;
+    }
+
+    .debug-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .debug-actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    .debug-btn {
+      padding: 4px 8px;
+      font-size: 11px;
+      background: var(--bg-lighter);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .debug-btn:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    .debug-log-container {
+      flex: 1;
+      overflow-y: auto;
+      padding: 8px;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 11px;
+    }
+
+    .debug-log-entry {
+      padding: 4px 8px;
+      margin: 2px 0;
+      border-radius: 3px;
+      word-break: break-all;
+    }
+
+    .debug-log-entry.info {
+      background: rgba(37, 99, 235, 0.1);
+      border-left: 2px solid var(--primary);
+    }
+
+    .debug-log-entry.warn {
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 2px solid var(--warning);
+    }
+
+    .debug-log-entry.error {
+      background: rgba(239, 68, 68, 0.1);
+      border-left: 2px solid var(--danger);
+    }
+
+    .debug-log-entry.success {
+      background: rgba(16, 185, 129, 0.1);
+      border-left: 2px solid var(--success);
+    }
+
+    .debug-log-timestamp {
+      color: var(--secondary);
+      margin-right: 8px;
+      font-size: 10px;
+    }
+
+    .debug-toggle {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      padding: 8px 12px;
+      background: var(--bg-lighter);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text-secondary);
+      font-size: 11px;
+      cursor: pointer;
+      z-index: 998;
+    }
+
+    .debug-toggle:hover {
+      background: var(--primary);
+      color: white;
+    }
+
     ::-webkit-scrollbar {
       width: 8px;
     }
@@ -519,6 +635,24 @@ Status: Check the top-right corner for vault connection status.
     </div>
   </main>
 
+  <!-- DEBUG TOGGLE BUTTON -->
+  <button class="debug-toggle" onclick="toggleDebugPanel()" title="Toggle Debug Panel">
+    🐛 Debug
+  </button>
+
+  <!-- DEBUG PANEL -->
+  <div class="debug-panel" id="debug-panel">
+    <div class="debug-header">
+      <span class="debug-title">🔍 Debug Log</span>
+      <div class="debug-actions">
+        <button class="debug-btn" onclick="downloadDebugLog()" title="Download debug log">⬇️ Download</button>
+        <button class="debug-btn" onclick="clearDebugLog()" title="Clear debug log">🗑️ Clear</button>
+        <button class="debug-btn" onclick="toggleDebugPanel()" title="Close">✖️</button>
+      </div>
+    </div>
+    <div class="debug-log-container" id="debug-log-container"></div>
+  </div>
+
   <!-- SETTINGS MODAL -->
   <div class="modal" id="settings-modal">
     <div class="modal-content">
@@ -576,8 +710,71 @@ Status: Check the top-right corner for vault connection status.
       apiKey: localStorage.getItem('mistral-api-key') || '',
       vaultUrl: localStorage.getItem('vault-url') || 'http://localhost:3000',
       connected: false,
-      messages: []
+      messages: [],
+      debugLogs: []
     };
+
+    // DEBUG LOGGING FUNCTIONS
+    function logDebug(message, type = 'info') {
+      const timestamp = new Date().toISOString().substr(11, 12);
+      const logEntry = { timestamp, message, type, id: Date.now() + Math.random() };
+      state.debugLogs.push(logEntry);
+      renderDebugLog();
+      console.log(`[${type.toUpperCase()}] ${message}`);
+    }
+
+    function renderDebugLog() {
+      const container = document.getElementById('debug-log-container');
+      if (!container) return;
+      
+      container.innerHTML = state.debugLogs.map(log => `
+        <div class="debug-log-entry ${log.type}">
+          <span class="debug-log-timestamp">${log.timestamp}</span>
+          <span>${escapeHtml(log.message)}</span>
+        </div>
+      `).join('');
+      
+      container.scrollTop = container.scrollHeight;
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function toggleDebugPanel() {
+      const panel = document.getElementById('debug-panel');
+      panel.classList.toggle('show');
+      if (panel.classList.contains('show')) {
+        renderDebugLog();
+        logDebug('Debug panel opened', 'info');
+      }
+    }
+
+    function clearDebugLog() {
+      state.debugLogs = [];
+      renderDebugLog();
+      logDebug('Debug log cleared', 'info');
+    }
+
+    function downloadDebugLog() {
+      const logContent = state.debugLogs.map(log => 
+        `[${log.timestamp}] [${log.type.toUpperCase()}] ${log.message}`
+      ).join('\n');
+      
+      const blob = new Blob([logContent], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `vault-explorer-debug-${new Date().toISOString().replace(/[:.]/g, '-')}.log`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      
+      logDebug('Debug log downloaded', 'success');
+    }
 
     // AGENTS DEFINITIONS (Generic)
     const AGENTS = {
@@ -601,16 +798,16 @@ Status: Check the top-right corner for vault connection status.
 
     // INITIALIZATION
     async function initApp() {
-      console.log('🚀 Initializing Vault Explorer...');
+      logDebug('🚀 Initializing Vault Explorer...', 'info');
 
       // Try to load external scripts
       try {
         // These scripts should be in the same directory
         await loadScript('voanh-vault-client.js');
         await loadScript('voanh-agents-qms-integration.js');
-        console.log('✓ Scripts loaded');
+        logDebug('✓ Scripts loaded successfully', 'success');
       } catch (error) {
-        console.warn('⚠️ Could not load scripts:', error.message);
+        logDebug(`⚠️ Could not load scripts: ${error.message}`, 'warn');
         addMessage('⚠️ Some scripts not found. Limited functionality mode.', 'system');
       }
 
@@ -619,11 +816,13 @@ Status: Check the top-right corner for vault connection status.
         await testVaultConnection();
       } else {
         updateStatus(false, 'Needs configuration');
+        logDebug('⚠️ Missing API key or Vault URL - needs configuration', 'warn');
         addMessage('⚠️ Please configure Mistral API key and Vault URL in Settings.', 'system');
       }
 
       // Setup event listeners
       setupEventListeners();
+      logDebug('✅ Application initialized', 'success');
     }
 
     // HELPER: Load external script
@@ -639,6 +838,7 @@ Status: Check the top-right corner for vault connection status.
 
     // Test vault connection
     async function testVaultConnection() {
+      logDebug(`🔍 Testing vault connection to ${state.vaultUrl}...`, 'info');
       try {
         const response = await fetch(`${state.vaultUrl}/api/health`);
         const data = await response.json();
@@ -646,7 +846,7 @@ Status: Check the top-right corner for vault connection status.
         if (data.status === 'ok') {
           state.connected = true;
           updateStatus(true, `Connected (${data.indexed} files)`);
-          console.log('✓ Connected to vault');
+          logDebug(`✓ Connected to vault with ${data.indexed} indexed files`, 'success');
           addMessage(`✓ Connected to vault with ${data.indexed} files`, 'system');
         } else {
           throw new Error('Vault returned error');
@@ -654,7 +854,7 @@ Status: Check the top-right corner for vault connection status.
       } catch (error) {
         state.connected = false;
         updateStatus(false, 'Vault API unavailable');
-        console.error('❌ Vault connection failed:', error);
+        logDebug(`❌ Vault connection failed: ${error.message}`, 'error');
         showConnectionError();
       }
     }
@@ -701,7 +901,7 @@ Status: Check the top-right corner for vault connection status.
       info.innerHTML = `<strong>${agent.name}</strong><br>${agent.description}`;
       info.classList.add('show');
       
-      console.log(`✓ Selected agent: ${agentId}`);
+      logDebug(`✓ Selected agent: ${agentId}`, 'info');
     }
 
     // ADD MESSAGE TO CHAT
@@ -755,14 +955,18 @@ Status: Check the top-right corner for vault connection status.
       if (!query) return;
 
       if (!state.connected) {
+        logDebug('❌ Cannot send query: Vault API not connected', 'error');
         addMessage('❌ Vault API not connected. Check settings.', 'system');
         return;
       }
 
       if (!state.apiKey) {
+        logDebug('❌ Cannot send query: Mistral API key not set', 'error');
         addMessage('❌ Mistral API key not set. Check settings.', 'system');
         return;
       }
+
+      logDebug(`📤 Sending query: "${query}"`, 'info');
 
       // Add user message
       addMessage(query, 'user');
@@ -777,6 +981,7 @@ Status: Check the top-right corner for vault connection status.
       try {
         // Simple mock response if scripts not loaded
         if (!window.QMSAgents) {
+          logDebug('⚠️ QMSAgents not available - using mock response', 'warn');
           const mockResponse = `I would analyze: "${query}"
 
 (Note: External scripts not loaded. For full functionality:
@@ -786,6 +991,7 @@ Status: Check the top-right corner for vault connection status.
           addMessage(mockResponse, 'assistant');
         } else {
           // Use real agent
+          logDebug('🤖 Using QMS Agent Manager for query processing', 'info');
           const manager = new window.QMSAgents.AgentManager(
             window.VOANHVaultClient ? new window.VOANHVaultClient(state.vaultUrl) : null,
             state.apiKey
@@ -793,14 +999,16 @@ Status: Check the top-right corner for vault connection status.
           
           const result = await manager.chatAuto(query);
           if (result.success) {
+            logDebug(`✓ Query successful - ${result.metadata?.sourceFiles?.length || 0} sources used`, 'success');
             addMessage(result.response, 'assistant', result.metadata);
           } else {
+            logDebug(`❌ Agent error: ${result.error}`, 'error');
             addMessage(`❌ Error: ${result.error}`, 'assistant');
           }
         }
       } catch (error) {
+        logDebug(`❌ Query error: ${error.message}`, 'error');
         addMessage(`❌ Error: ${error.message}`, 'assistant');
-        console.error('Query error:', error);
       } finally {
         sendBtn.disabled = false;
         loadingEl.style.display = 'none';
@@ -812,9 +1020,11 @@ Status: Check the top-right corner for vault connection status.
       const keywords = prompt('Search for (keywords):');
       if (!keywords) return;
 
+      logDebug(`🔍 Search requested for: "${keywords}"`, 'info');
       addMessage(`Searching for: "${keywords}"`, 'user');
 
       if (!state.connected) {
+        logDebug('❌ Cannot search: Vault not connected', 'error');
         addMessage('❌ Vault not connected', 'assistant');
         return;
       }
@@ -828,8 +1038,10 @@ Status: Check the top-right corner for vault connection status.
           result += `${i + 1}. ${r.name}\n   Path: ${r.path}\n`;
         });
         
+        logDebug(`✓ Search completed - ${data.results?.length || 0} results found`, 'success');
         addMessage(result, 'assistant');
       } catch (error) {
+        logDebug(`❌ Search error: ${error.message}`, 'error');
         addMessage(`❌ Search error: ${error.message}`, 'assistant');
       }
     }
@@ -839,9 +1051,11 @@ Status: Check the top-right corner for vault connection status.
       const folder = prompt('Enter folder path (e.g., QMS or Projects):');
       if (!folder) return;
 
+      logDebug(`📁 Browse requested for: "${folder}"`, 'info');
       addMessage(`Listing: ${folder}`, 'user');
 
       if (!state.connected) {
+        logDebug('❌ Cannot browse: Vault not connected', 'error');
         addMessage('❌ Vault not connected', 'assistant');
         return;
       }
@@ -859,8 +1073,10 @@ Status: Check the top-right corner for vault connection status.
           result = `Folder not found or empty: ${folder}`;
         }
         
+        logDebug(`✓ Browse completed - ${data.files?.length || 0} files found`, 'success');
         addMessage(result, 'assistant');
       } catch (error) {
+        logDebug(`❌ Browse error: ${error.message}`, 'error');
         addMessage(`❌ Error: ${error.message}`, 'assistant');
       }
     }
@@ -869,6 +1085,7 @@ Status: Check the top-right corner for vault connection status.
     function clearChat() {
       document.getElementById('chat-display').innerHTML = '';
       state.messages = [];
+      logDebug('🗑️ Chat cleared', 'info');
       addMessage('Chat cleared', 'system');
     }
 
@@ -895,11 +1112,13 @@ Status: Check the top-right corner for vault connection status.
       const vaultUrl = document.getElementById('vault-url-input').value;
 
       if (!apiKey) {
+        logDebug('❌ Cannot save settings: Missing API key', 'error');
         alert('Please enter Mistral API key');
         return;
       }
 
       if (!vaultUrl) {
+        logDebug('❌ Cannot save settings: Missing Vault URL', 'error');
         alert('Please enter Vault API URL');
         return;
       }
@@ -910,6 +1129,7 @@ Status: Check the top-right corner for vault connection status.
       localStorage.setItem('mistral-api-key', apiKey);
       localStorage.setItem('vault-url', vaultUrl);
 
+      logDebug(`✓ Settings saved - API Key: ${apiKey.substring(0, 6)}..., Vault URL: ${vaultUrl}`, 'success');
       closeSettings();
       addMessage('✓ Settings saved', 'system');
 
